@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courier Management System</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: whitesmoke;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .dashboard{
+            text-align: center;
+        }
+
+        .card{
+            width: 200px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        .total{
+            background-color: lightblue;
+        }
+
+        .delivered{
+            background-color: lightgreen;
+        }
+
+        .delayed{
+            background-color: lightpink;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        th, td{
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th{
+            background-color: lightgray;
+        }
+
+        .menu{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .menu a{
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid black;
+            color: black;
+            background-color: lightyellow;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Courier Management System</h1>
+
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">Shipments</a>
+        <a href="#">Tracking</a>
+        <a href="#">Reports</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="dashboard">
+
+        <div class="card total">
+            <h3>Total Shipments</h3>
+            <p>150</p>
+        </div>
+
+        <div class="card delivered">
+            <h3>Delivered</h3>
+            <p>120</p>
+        </div>
+
+        <div class="card delayed">
+            <h3>Delayed</h3>
+            <p>30</p>
+        </div>
+
+    </div>
+
+    <h2>Shipment Details</h2>
+
+    <table>
+
+        <tr>
+            <th>AWB Number</th>
+            <th>Customer</th>
+            <th>Destination</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>1001</td>
+            <td>ABC Industries</td>
+            <td>Mumbai</td>
+            <td>Delivered</td>
+        </tr>
+
+        <tr>
+            <td>1002</td>
+            <td>XYZ Traders</td>
+            <td>Pune</td>
+            <td>In Transit</td>
+        </tr>
+
+        <tr>
+            <td>1003</td>
+            <td>Tech Solutions</td>
+            <td>Delhi</td>
+            <td>Delayed</td>
+        </tr>
+
+        <tr>
+            <td>1004</td>
+            <td>Global Exports</td>
+            <td>Chennai</td>
+            <td>Delivered</td>
+        </tr>
+
+    </table>
+
+    <h2>About Project</h2>
+
+    <p>
+        This Courier Management System is designed to manage courier
+        shipment records, track delivery status, and display shipment
+        information in an organized manner. The system helps courier
+        companies monitor delivered, delayed, and in-transit shipments.
+    </p>
+
+</body>
+</html>
