@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courier Shipment Monitoring System</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:20px;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        th,td{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+
+        .delayed{
+            background-color:#ffcccc;
+        }
+
+        .delivered{
+            background-color:#ccffcc;
+        }
+
+        input,button{
+            padding:10px;
+            margin:5px;
+        }
+
+        .card{
+            border:1px solid gray;
+            padding:15px;
+            margin:10px;
+            display:inline-block;
+            width:180px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Courier Shipment Monitoring System</h1>
+
+<div>
+    <input type="text" id="awb" placeholder="AWB Number">
+    <input type="text" id="destination" placeholder="Destination">
+    <input type="number" id="expected" placeholder="Expected Days">
+    <input type="number" id="current" placeholder="Current Days">
+    <input type="text" id="status" placeholder="Status">
+
+    <button onclick="addShipment()">Add Shipment</button>
+</div>
+
+<div class="card">
+    <h3>Total</h3>
+    <p id="total">0</p>
+</div>
+
+<div class="card">
+    <h3>Delayed</h3>
+    <p id="delayed">0</p>
+</div>
+
+<div class="card">
+    <h3>Delivered</h3>
+    <p id="delivered">0</p>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>AWB</th>
+            <th>Destination</th>
+            <th>Expected Days</th>
+            <th>Current Days</th>
+            <th>Status</th>
+            <th>Delay Days</th>
+        </tr>
+    </thead>
+
+    <tbody id="shipmentTable">
+
+    </tbody>
+</table>
+
+<script>
+
+let shipments = [];
+
+function addShipment(){
+
+    let awb = document.getElementById("awb").value;
+    let destination = document.getElementById("destination").value;
+    let expected = parseInt(document.getElementById("expected").value);
+    let current = parseInt(document.getElementById("current").value);
+    let status = document.getElementById("status").value;
+
+    let delayDays = 0;
+
+    if(current > expected && status.toLowerCase() !== "delivered"){
+        delayDays = current - expected;
+    }
+
+    shipments.push({
+        awb,
+        destination,
+        expected,
+        current,
+        status,
+        delayDays
+    });
+
+    displayData();
+}
+
+function displayData(){
+
+    let table = document.getElementById("shipmentTable");
+    table.innerHTML = "";
+
+    let delayedCount = 0;
+    let deliveredCount = 0;
+
+    shipments.forEach(ship => {
+
+        let row = table.insertRow();
+
+        if(ship.delayDays > 0){
+            row.classList.add("delayed");
+            delayedCount++;
+        }
+
+        if(ship.status.toLowerCase() === "delivered"){
+            row.classList.add("delivered");
+            deliveredCount++;
+        }
+
+        row.insertCell(0).innerHTML = ship.awb;
+        row.insertCell(1).innerHTML = ship.destination;
+        row.insertCell(2).innerHTML = ship.expected;
+        row.insertCell(3).innerHTML = ship.current;
+        row.insertCell(4).innerHTML = ship.status;
+        row.insertCell(5).innerHTML = ship.delayDays;
+    });
+
+    document.getElementById("total").innerHTML = shipments.length;
+    document.getElementById("delayed").innerHTML = delayedCount;
+    document.getElementById("delivered").innerHTML = deliveredCount;
+}
+
+</script>
+
+</body>
+</html>
